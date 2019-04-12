@@ -1,0 +1,558 @@
+﻿body {
+    background-image: url('img/bg.jpg');
+    font-size: 12px;
+    margin: 0px;
+}
+
+#container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+/********************Start Loading Animation CSS***************************/
+
+.loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -60px 0 0 -60px;
+    background: trasparent;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    border: 10px solid #19bee1;
+    display:none;
+}
+
+.loading:after {
+    content: '';
+    background: trasparent;
+    width: 140%;
+    height: 140%;
+    position: absolute;
+    border-radius: 100%;
+    top: -20%;
+    left: -20%;
+    opacity: 0.7;
+    box-shadow: rgba(255, 255, 255, 0.6) -4px -5px 3px -3px;
+    animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+#Wait {
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    color: whitesmoke;
+}
+
+/********************End Loading Animation CSS***************************/
+
+.window {
+    position: absolute;
+    display: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid #ddd;
+    border: solid 1px #102a3e;
+    overflow: visible;
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 1px #fff;
+    box-shadow: inset 0 0 1px #fff;
+    background-color: #619bb9;
+    background: -webkit-linear-gradient(top, rgba(50, 123, 165, 0.75), rgba(46, 75, 90, 0.75) 50%, rgba(92, 176, 220, 0.75));
+    background: -moz-linear-gradient(top, rgba(50, 123, 165, 0.75), rgba(46, 75, 90, 0.75) 50%, rgba(92, 176, 220, 0.75));
+    background: -o-linear-gradient(top, rgba(50, 123, 165, 0.75), rgba(46, 75, 90, 0.75) 50%, rgba(92, 176, 220, 0.75));
+    background: linear-gradient(top, rgba(50, 123, 165, 0.75), rgba(46, 75, 90, 0.75) 50%, rgba(92, 176, 220, 0.75));
+}
+
+.window p {
+    background: url("img/calc-icon.png") no-repeat;
+    padding-left: 19px;
+    margin: 8px;
+    margin-top: 5px;
+    color: #fff;
+    float: left;
+    font-size:14px;
+}
+
+.head {
+    width: 100%;
+    height: 27px;
+}
+
+.wcmd {
+    float: right;
+    margin-right: 7px;
+}
+
+.wcmd a {
+    float: left;
+}
+
+.wcmd .min {
+    width: 29px;
+    height: 19px;
+    background: -webkit-linear-gradient(top, #D3CED8 50%,#a69eae 50%);
+    background: -moz-linear-gradient(top, #D3CED8 50%,#a69eae 50%);
+    background: -o-linear-gradient(top, #D3CED8 50%,#a69eae 50%);
+    background: -ms-linear-gradient(top, #D3CED8 50%,#a69eae 50%);
+    background: linear-gradient(top, #D3CED8 50%,#a69eae 50%);
+    text-align: center;
+    color: #fff;
+    border-radius: 0 0 0 2px;
+    border: 1px solid #555;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    text-shadow: -1px 0 #444, 0 1px #444, 1px 0 #444, 0 -1px #444;
+    font-size: 30px;
+    line-height: 16px;
+}
+
+.wcmd .max {
+    width: 27px;
+    height: 19px;
+    text-align: center;
+    background: -webkit-linear-gradient(top, #D3CED8 50%,#a69eae 50%);
+    background: -moz-linear-gradient(top, #D3CED8 50%,#a69eae 50%);
+    background: -o-linear-gradient(top, #D3CED8 50%,#a69eae 50%);
+    background: -ms-linear-gradient(top, #D3CED8 50%,#a69eae 50%);
+    background: linear-gradient(top, #D3CED8 50%,#a69eae 50%);
+    color: #fff;
+    font-weight: bolder;
+    border: 1px solid #555;
+    border-top-width: 0;
+    border-right-width: 0;
+    text-shadow: -1px 0 #444, 0 1px #444, 1px 0 #444, 0 -1px #444;
+    font-size: 19px;
+    line-height: 14px;
+}
+
+.wcmd .min:hover, .wcmd .max:hover {
+    -webkit-box-shadow: 0px 0px 5px 3px rgba(0,198,255,0.5);
+    box-shadow: 0px 0px 5px 3px rgba(0,198,255,0.5);
+    background: -webkit-linear-gradient(top, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);
+    background: -moz-linear-gradient(top, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);
+    background: -o-linear-gradient(top, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);
+    background: -ms-linear-gradient(top, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);
+    background: linear-gradient(top, #cedbe9 0%,#aac5de 17%,#6199c7 50%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);
+}
+
+.wcmd .close {
+    width: 48px;
+    height: 19px;
+    background: -webkit-linear-gradient(top, #f85032 50%,#e73827 50%);
+    background: -moz-linear-gradient(top, #f85032 50%,#e73827 50%);
+    background: -o-linear-gradient(top, #f85032 50%,#e73827 50%);
+    background: -ms-linear-gradient(top, #f85032 50%,#e73827 50%);
+    background: linear-gradient(top, #f85032 50%,#e73827 50%);
+    text-align: center;
+    color: #fff;
+    border-radius: 0 0 3px 0;
+    border: 1px solid #555;
+    text-shadow: -1px 0 #444, 0 1px #444, 1px 0 #444, 0 -1px #444;
+    border-top-width: 0;
+}
+
+.wcmd .close:hover {
+    -webkit-box-shadow: 0px 0px 11px 3px #f85032;
+    box-shadow: 0px 0px 11px 3px #f85032;
+}
+
+.wcmd a:hover {
+    cursor: pointer;
+}
+
+
+.window-in {
+    background: #D9E4F1;
+    margin: 7px;
+    border: solid 1px #102a3e;
+    bottom: 0;
+    position: absolute;
+}
+
+.window-controls {
+    margin: 10px;
+}
+
+.window-error {
+    font: bold;
+    color: red;
+    position: absolute;
+    display: none;
+}
+
+.btn {
+    height: 25px;
+}
+
+.txt {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.lbl {
+    font: bold;
+    font-size: 14px;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.tblGrid {
+    border-collapse: collapse;
+}
+
+.tblGrid td, th {
+    border: 1px solid black;
+    white-space: nowrap;
+}
+
+.tblGrid th {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: normal;
+    background-color: #D9E4F1;
+    cursor:default;
+}
+
+.tblGrid tr {
+    background-color: white;
+    cursor: pointer;
+}
+
+.tblGrid tr:hover {
+    background-color:lavender;
+}
+
+.tblGrid .selected {
+    background-color: lavender;
+}
+
+
+/********************Start Login Window CSS***************************/
+#login {
+    width: 317px;
+    height: 200px;
+    -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+    animation: fadein 3s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#login-in {
+    width: 300px;
+    height: 180px;
+}
+
+
+#login-error {
+    left: 50px;
+    bottom: 0px;
+}
+
+#txtUsername, #txtPassword {
+    position: absolute;
+    width: 170px;
+    font-size: 17px;
+    left: 108px;
+}
+
+#txtUsername {
+    top: 16px;
+}
+
+#txtPassword {
+    top: 55px;
+}
+
+#btnLogin, #btnCancel {
+    width: 74px;
+    height: 40px;
+}   
+
+#btnLogin {
+    position: absolute;
+    left: 70px;
+    top: 120px;
+}
+
+#btnCancel {
+    position:absolute;
+    left: 170px;
+    top: 120px;
+}
+
+
+/********************End Login Window CSS***************************/
+
+
+/********************Start Address Window CSS***************************/
+#address {
+    width: 600px;
+    height: 475px;
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+    animation: fadein 1s;
+}
+
+#address p {
+    background: url("img/address.ico") no-repeat;
+}
+
+#address-in {
+    width: 583px;
+    height: 440px;
+}
+
+
+#address-error {
+    left: 50px;
+    bottom: 0px;
+}
+
+#btnSave {
+    left: 70px;
+    top: 120px;
+}
+
+#btnQuit {
+    left: 170px;
+    top: 120px;
+}
+
+.AddTabHead {
+    width: 29%;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    font: bold;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.AddTab {
+    font: bold;
+    font-size: 14px;
+    border-radius: 5px;
+    border-left: 2px solid #eaf0f7;
+    border-top: 2px solid #eaf0f7;
+    border-right: 2px solid #b3c0ce;
+    border-bottom: 2px solid #b3c0ce;
+    padding: 10px;
+    height:200px;
+    /*box-shadow: 0px 0px 15px rgb(179, 192, 206) inset;*/
+}
+
+#divAddressHead {
+    border-left: 2px solid #eaf0f7;
+    border-top: 2px solid #eaf0f7;
+    border-right: 2px solid #b3c0ce;
+    /*box-shadow: 0px 0px 15px rgb(179, 192, 206) inset;*/
+}
+
+#divSubscription, #divPreviousAdd {
+    display: none;
+}
+
+/********************End Address Window CSS***************************/
+
+/********************Start Remove Window CSS***************************/
+#remove {
+    width: 650px;
+    height: 575px;
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+    animation: fadein 1s;
+}
+
+#remove p {
+    background: url("img/remove.ico") no-repeat;
+}
+
+#remove-in {
+    width: 633px;
+    height: 540px;
+}
+
+
+#remove-error {
+    left: 50px;
+    bottom: 0px;
+}
+
+/********************End Remove Window CSS***************************/
+
+/********************Start Modify Window CSS***************************/
+#modify {
+    width: 412px;
+    height: 275px;
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+    animation: fadein 1s;
+}
+
+ #modify p {
+        background: url("img/address.ico") no-repeat;
+    }
+
+#modify-in {
+    width: 395px;
+    height: 240px;
+}
+
+
+#modify-error {
+    left: 50px;
+    bottom: 0px;
+}
+
+/********************End Modify Window CSS***************************/
+
+/********************Start Search Window CSS***************************/
+#search {
+    width: 400px;
+    height: 275px;
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+    animation: fadein 1s;
+}
+
+#search p {
+    background: url("img/address.ico") no-repeat;
+}
+
+#search-in {
+    width: 383px;
+    height: 240px;
+}
+
+
+/********************End Search Window CSS***************************/
+
+/********************Start Report Window CSS***************************/
+#report {
+    width: 397px;
+    height: 360px;
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+    animation: fadein 1s;
+}
+
+#report p {
+    background: url("img/report.ico") no-repeat;
+}
+
+#report-in {
+    width: 380px;
+    height: 325px;
+}
+
+#divReport {
+    border: solid 1px #102a3e;
+    background: #fff;
+    -webkit-user-select: text;
+    cursor: text;
+}
+
+
+/********************End Report Window CSS***************************/
+/********************Start Main Menu CSS***************************/
+#main-menu {
+    display: none;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    -webkit-user-select: none; /* disable select on double click */
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 3px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: lightgrey;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 9999;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 7px 26px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    cursor:pointer;
+}
+
+.dropdown-content .separator {
+    border-top: 1px solid #ddd;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/********************End Main Menu CSS***************************/
+

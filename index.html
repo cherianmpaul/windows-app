@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+    <meta charset="utf-8" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/main.js"></script>
+    <title>Address Management System</title>
+</head>
+<body>
+<div id='container'>
+
+    <!-- Start mainmenu -->
+    <div id="main-menu">
+        <ul>
+            <li class="dropdown">
+                <a class="dropbtn">File</a>
+                <div id="mnuFile" class="dropdown-content">
+                    <a id="mnuAddress">Address</a>
+                    <a id="mnuRemoveNames">Remove Names</a>
+                    <div class="separator"></div>
+                    <a id="mnuDeleteCustomer">Delete Customer</a>
+                    <div class="separator"></div>
+                    <a id="mnuClose">Close</a>
+                    <a id="mnuCloseAll">Close All</a>
+                    <div class="separator"></div>
+                    <a id="mnuBackup">Backup...</a>
+                    <div class="separator"></div>
+                    <a id="mnuLogOff">Log Off</a>
+               </div>
+            </li>
+            <li class="dropdown">
+                <a class="dropbtn">Edit</a>
+                <div class="dropdown-content">
+                    <a id="mnuUndo" >Undo</a>
+                    <a id="mnuRedo" >Redo</a>
+                    <div class="separator"></div>
+                    <a id="mnuCut">Cut</a>
+                    <a >Copy</a>
+                    <a id="mnuPaste">Paste</a>
+                    <a id="mnuClear">Clear</a>
+                    <div class="separator"></div>
+                    <a id="mnuSelectAll">Select All</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a class="dropbtn">Reports</a>
+                <div class="dropdown-content">
+                    <a id="mnuKerala">Kerala</a>
+                    <a id="mnuOutOfKerala">Out of Kerala</a>
+                    <a id="mnuForeign">Foreign</a>
+                    <div class="separator"></div>
+                    <a id="mnuModifyReport">Modify Report</a>
+                    <div class="separator"></div>
+                    <a id="mnuOptions">Options</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a class="dropbtn">Window</a>
+                <div class="dropdown-content">
+                    <a id="mnuArrangeAll">Arrange All</a>
+                    <div class="separator"></div>
+                    <a id="mnuHide">Hide</a>
+                    <a id="mnuCycle">Cycle</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a class="dropbtn">Help</a>
+                <div class="dropdown-content">
+                    <a id="mnuAmsHelp">AMS Help</a>
+                    <div class="separator"></div>
+                    <a id="mnuAbout">About AMS</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- end mainmenu -->
+
+    <div class="loading" id="LoadingAnimation"><div id="Wait">Please Wait...</div></div>
+
+    <!-- Start Login Window -->
+        <div id="login" class="window" onmousedown='mydragg.startMoving(this,"container",event);' onmouseup='mydragg.stopMoving("container");'>
+            <div id="login-in" class="window-in">
+                <div id="login-controls" style="margin:20px;">
+                    <label for="txtUsername" style="font-size: 15px;font:bold;">User Names:</label>
+                    <input id="txtUsername" type="text" onkeydown = "txtUserName_Changed(event)"  onmousedown="(e=>e.stopPropagation())(event)" onmouseup="(e=>e.stopPropagation())(event)"/> <br /><br />
+                    <label for="txtPassword" style="font-size: 15px;font:bold;">Password :</label> 
+                    <input id="txtPassword" type="password" onkeydown = "txtPassword_Changed(event)"  onmousedown="(e=>e.stopPropagation())(event)" onmouseup="(e=>e.stopPropagation())(event)"/> <br /><br />
+                    <input id="btnLogin" type="button" value="Login"  onmousedown="(e=>e.stopPropagation())(event)" onmouseup="(e=>e.stopPropagation())(event)"/>
+                    <input id="btnCancel" type="button" value="Cancel"  onmousedown="(e=>e.stopPropagation())(event)" onmouseup="(e=>e.stopPropagation())(event)"/><br />
+                    <span id="login-error" class="window-error">Invalid Username or Password!</span>
+                </div>
+            </div>
+        </div>
+    <!-- End Login Window -->
+
+    <!-- Start Address Window -->
+        <div id="address" class="window" onmousedown='mydragg.startMoving(this,"container",event);' onmouseup='mydragg.stopMoving("container");'>
+            <div class="head">
+                <p> Address Details</p>
+                <div class="wcmd">
+                    <a id="addressMin" class="min">-</a>
+                    <a id="addressMax" class="max">□</a>
+                    <a id="addressClose" class="close">✖</a>
+                </div>
+            </div>
+            <div id="address-in" class="window-in" onmousedown="SetWindowOnTop(this, event);" onmouseup="(e=>e.stopPropagation())(event)">
+                <div id="address-controls" class="window-controls">
+                    <table style="width:100%;">
+                    <tr><td><label class="lbl" for="numCustCode">Customer Code :</label></td><td><input id="numCustCode" type="number" style="width:75px;"  /></td><td style="text-align:right;"><label  class="lbl" for="numSearchCust">Display Customer by Code :</label> <input id="numSearchCust" type="number" style="width:75px;" /></td></tr>
+                    <tr><td><label class="lbl" for="txtCustSal">Customer Name :</label></td><td colspan="2"><input id="txtCustSal" type="text" class="txt" style="width:40px;" /> &nbsp;<input id="txtCustName" type="text" class="txt" style="width:220px;" /> </td></tr>
+                    <tr><td><label class="lbl" for="ddbGroup">Group :</label></td><td colspan="2"> <select id="ddbGroup"> <option>11</option><option>12</option><option>13</option></select> <label class="lbl"> 11 - Kerala, 12 - Out of Kerala, 13 - Foreign</label> </td></tr>
+                    <tr><td><label class="lbl" for="ddbSubType">Subscription Type :</label></td><td colspan="2"><select id="ddbSubType"><option>L</option><option>F</option><option>H</option><option>E</option><option>P</option></select><label class="lbl"> Life/Free/Half/Exchange/Paid</label> <div style="text-align:right;display:inline-block;width:200px;"><label class="lbl" id="lblRemoved" style="font-weight:bold;color:red;display:none;"> ### REMOVED ### </label></div> </td></tr>
+                    </table>
+
+                    <div id="divAddressHead" class="AddTabHead">Address</div>
+                    <div id="divSubscriptionHead" class="AddTabHead">Subscription</div>
+                    <div id="divPreviousAddHead" class="AddTabHead">Previous Address</div>
+
+                    <div id="divAddress" class="AddTab">
+                    <table style="width:100%;">
+                        <tr><td><label class="lbl">Address1 :</label></td><td colspan="3"><input id="txtAddress1" type="text" class="txt" style="width:445px;" /></td></tr>
+                        <tr><td><label class="lbl">Address2 :</label></td><td colspan="3"><input id="txtAddress2" type="text" class="txt" style="width:445px;" /></td></tr>
+                        <tr><td><label class="lbl">Address3 :</label></td><td colspan="3"><input id="txtAddress3" type="text" class="txt" style="width:445px;" /></td></tr>
+                        <tr><td><label class="lbl">Taluk :</label></td><td><input id="txtTaluk" type="text" class="txt" style="width:150px;" /></td><td><label class="lbl">City :</label></td><td><input id="txtCity" type="text" class="txt" style="width:150px;" /></td></tr>
+                        <tr><td><label class="lbl">District :</label></td><td><input id="txtDistrict" type="text" class="txt" style="width:150px;" /></td><td><label class="lbl">Pin :</label></td><td><input id="txtPin" type="text" class="txt" style="width:150px;" /></td></tr>
+                        <tr><td><label class="lbl">State :</label></td><td><input id="txtState" type="text" class="txt" style="width:150px;" /></td><td><label class="lbl">Country :</label></td><td><input id="txtCounty" type="text" class="txt"  style="width:150px;" /></td></tr>
+                        <tr><td><label class="lbl">Contact No :</label></td><td><input id="txtContactNo" type="text" class="txt" style="width:150px;" /></td><td colspan="2">&nbsp;</td></tr>
+                   </table>
+                    </div>
+                    <div id="divSubscription" class="AddTab">
+                        <div id="divSubsRows" style="height:160px;overflow:scroll;border:solid;border-width:thin">
+
+                        </div><br />
+                        <label class="lbl">Press Modify to add subscription to this customer  :  </label>
+                        <input id="btnModify" type="button" value="Modify"  />
+                    </div>
+                    <div id="divPreviousAdd" class="AddTab">
+                        <table style="width:100%;">
+                            <tr><td><label class="lbl">Address1 :</label></td><td colspan="3"><input id="txtOldAddress1" type="text" class="txt" style="width:445px;" /></td></tr>
+                            <tr><td><label class="lbl">Address2 :</label></td><td colspan="3"><input id="txtOldAddress2" type="text" class="txt" style="width:445px;" /></td></tr>
+                            <tr><td><label class="lbl">Address3 :</label></td><td colspan="3"><input id="txtOldAddress3" type="text" class="txt" style="width:445px;" /></td></tr>
+                            <tr><td><label class="lbl">Taluk :</label></td><td><input id="txtOldTaluk" type="text" class="txt" style="width:150px;" /></td><td><label class="lbl">City :</label></td><td><input id="txtOldCity" type="text" class="txt" style="width:150px;" /></td></tr>
+                            <tr><td><label class="lbl">District :</label></td><td><input id="txtOldDistrict" type="text" class="txt" style="width:150px;" /></td><td><label class="lbl">Pin :</label></td><td><input id="txtOldPin" type="text" class="txt" style="width:150px;" /></td></tr>
+                            <tr><td><label class="lbl">State :</label></td><td><input id="txtOldState" type="text" class="txt" style="width:150px;" /></td><td colspan="2" rowspan="2"><input id="btnCopyAdd" class="btn" type="button" value="Copy Current Address" disabled /></td></tr>
+                            <tr><td><label class="lbl">Country :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><input id="txtOldCounty" type="text" class="txt" style="width:150px;" /></td></tr>
+                        </table>
+                    </div>
+                    <br/>
+                    <table style="width:100%;">
+                        <tr><td>
+                                <input id="btnSave" class="btn" type="button" value="Save" disabled/>
+                                <input id="btnClear" class="btn" type="button" value="Clear" disabled />
+                                <input id="btnQuit" class="btn" type="button" value="Quit" />
+                                <input id="btnNew" class="btn" type="button" value="New" />
+                                <input id="btnEdit" class="btn" type="button" value="Edit" />
+                                <input id="btnSearch" class="btn" type="button" value="Search" />
+                                <input id="btnRemove" class="btn" type="button" value="Remove" />
+                            </td><td style="text-align:right;">
+                                <input id="btnFirstRow" class="btn" type="button" value="&#9664;&#9664;" />
+                                <input id="btnPreviousRow" class="btn" type="button" value="&#9664;" />
+                                <input id="btnNextRow" class="btn" type="button" value="&#9654;" />
+                                <input id="btnLastRow" class="btn" type="button" value="&#9654;&#9654;" />
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                    <span id="address-error" class="window-error">Invalid UserInput!</span>
+
+                </div>
+            </div>
+        </div>
+    <!-- End Address Window -->
+
+    <!-- Start Remove Window -->
+    <div id="remove" class="window" onmousedown='mydragg.startMoving(this,"container",event);' onmouseup='mydragg.stopMoving("container");'>
+        <div class="head">
+            <p> Remove Names</p>
+            <div class="wcmd">
+                <a id="removeMin" class="min">-</a>
+                <a id="removeMax" class="max">□</a>
+                <a id="removeClose" class="close">✖</a>
+            </div>
+        </div>
+        <div id="remove-in" class="window-in" onmousedown="SetWindowOnTop(this, event);" onmouseup="(e=>e.stopPropagation())(event)">
+            <div id="remove-controls" class="window-controls">
+                <label class="lbl">Subscription Below Date : </label>&nbsp;&nbsp;<select id="ddbMonth"></select>&nbsp;&nbsp;<select id="ddbYear"></select>&nbsp;&nbsp;
+                <div style="border-style:solid;display:inline-block;border-width:thin;border-color:gray;padding-left:10px;padding-right:10px;"><input id="radSubTypeP" type="radio" value="P" name="radSubType" checked />Paid<input id="radSubTypeH" type="radio" value="H" name="radSubType" />Half</div>&nbsp;&nbsp;
+                <input id="chkRemoved" type="checkbox" value="Removed" />Removed &nbsp;&nbsp; <input id="btnRemovePrint" class="btn" type="button" value="Print" /> <br /><br />
+                <div style="height:480px;overflow:scroll;border:solid;border-width:thin" id="divRemoveSubs"></div>
+            </div>
+        </div>
+    </div>
+    <!-- End Remove Window -->
+
+    <!-- Start Modify Window -->
+    <div id="modify" class="window" onmousedown='mydragg.startMoving(this,"container",event);' onmouseup='mydragg.stopMoving("container");'>
+        <div class="head">
+            <p> Modify Subscription</p>
+            <div class="wcmd">
+                <a id="modifyMin" class="min">-</a>
+                <a id="modifyMax" class="max">□</a>
+                <a id="modifyClose" class="close">✖</a>
+            </div>
+        </div>
+        <div id="modify-in" class="window-in" onmousedown="SetWindowOnTop(this, event);" onmouseup="(e=>e.stopPropagation())(event)">
+                <div id="modify-controls" class="window-controls">
+                        <table style="width:100%;">
+                            <tr><td><label class="lbl">Amount : </label></td><td><input id="txtSubsAmount" type="number" class="txt" style="width:60px;" /></td></tr>
+                            <tr><td><label class="lbl">Subscription Period : </label></td><td><select id="ddbSubsFromMth"></select> <input id="txtSubsFromYr" type="number" min="1900" max="3000" class="txt" style="width:50px;" /> To <select id="ddbSubsToMth"></select> <input id="txtSubsToYr" type="number" min="1900" max="3000" class="txt" style="width:50px;" /></td></tr>
+                            <tr><td><label class="lbl">Instrument : </label></td><td><select id="ddSubsInst"><option>Cash</option><option>Cheque</option><option>Money Order</option><option>Demand Draft</option><option>Others</option></select></td></tr>
+                            <tr><td><label class="lbl">Instrument No : </label></td><td><input id="txtSubsInstNo" type="number" class="txt" style="width:60px;" /></td></tr>
+                            <tr><td><label class="lbl">Instrument Date : </label></td><td><input id="txtSubsInstDate" type="date" min="1900-01-01" max="3000-01-01" /></td></tr>
+                            <tr><td><label class="lbl">Instrument Details : </label></td><td><input id="txtSubsInstDetails" type="text" class="txt" style="width:200px;" /></td></tr>
+                            <tr><td><label class="lbl">Other Details : </label></td><td><input id="txtSubsOthDetails" type="text" class="txt" style="width:200px;" /></td></tr>
+                        </table><br />
+                    <input type="hidden" id="txtSubsId" value="" />
+                 <div style="text-align:center;">
+                    <input type="button" id="btnSubsSave" value="Save" class="btn" />
+                    <input type="button" id="btnSubsClear" value="Clear" class="btn"  />
+                    <input type="button" id="btnSubsQuit" value="Quit" class="btn" />
+                    <input type="button" id="btnSubsNew" value="New" class="btn" />
+                    <input type="button" id="btnSubsEdit" value="Edit" class="btn"  />
+                    <input type="button" id="btnSubsDelete" value="Delete" class="btn" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modify Window -->
+
+    <!-- Start Search Window -->
+    <div id="search" class="window" onmousedown='mydragg.startMoving(this,"container",event);' onmouseup='mydragg.stopMoving("container");'>
+        <div class="head">
+            <p> Search Subscribers</p>
+            <div class="wcmd">
+                <a id="searchMin" class="min">-</a>
+                <a id="searchMax" class="max">□</a>
+                <a id="searchClose" class="close">✖</a>
+            </div>
+        </div>
+        <div id="search-in" class="window-in" onmousedown="SetWindowOnTop(this, event);" onmouseup="(e=>e.stopPropagation())(event)">
+            <div id="search-controls" class="window-controls">
+                <input type="text" class="txt" id="txtSearchsubs" onkeyup = "txtSearchsubs_Changed(event)" style="width:360px" />
+                <div style="height:200px;overflow:scroll;border:solid;border-width:thin" id="divSearchSubs"></div>
+            </div>
+        </div>
+    </div>
+    <!-- End Search Window -->
+
+    <!-- Start Report Window -->
+    <div id="report" class="window" onmousedown='mydragg.startMoving(this,"container",event);' onmouseup='mydragg.stopMoving("container");'>
+        <div class="head">
+            <p>Modify Report</p>
+            <div class="wcmd">
+                <a id="reportMin" class="min">-</a>
+                <a id="reportMax" class="max">□</a>
+                <a id="reportClose" class="close">✖</a>
+            </div>
+        </div>
+        <div id="report-in" class="window-in" onmousedown="SetWindowOnTop(this, event);" onmouseup="(e=>e.stopPropagation())(event)">
+            <div id="report-controls" class="window-controls">
+                <div id="divReport"></div>
+                <hr />
+                <table style="width:300px;">
+                    <tr><td><label class="lbl">Label Height : </label></td><td><input type="number" class="txt" min="130" max="1250" id="txtRptHeight" style="width:40px" /></td>
+                    <td><label class="lbl">Label Width : </label></td><td><input type="number" class="txt" min="300" max="800" id="txtRptWidth" style="width:40px" /></td></tr>
+                    <tr><td><label class="lbl">Left Margin : </label></td><td><input type="number" class="txt" min="0" max="500" id="txtRptLeft" style="width:40px" /></td>
+                    <td><label class="lbl">Top Margin : </label></td><td><input type="number" class="txt" min="0" max="1120" id="txtRptTop" style="width:40px" /></td></tr>
+                    <tr><td><label class="lbl">Font Size : </label></td><td><input type="number" class="txt" id="txtRptFont" style="width:40px" /></td>
+                    <td colspan="2"><input id="chkDisplaySubs" type="checkbox" value="DisplaySubs"/><label class="lbl">Display Subscription</label></td></tr>
+                    <tr><td colspan="4" style="text-align:center"><br />
+                        <input type="button" id="btnRptSave" value="Save" class="btn" />
+                        <input type="button" id="btnRptClear" value="Clear" class="btn" />
+                        <input type="button" id="btnRptQuit" value="Quit" class="btn" />
+                        <input type="button" id="btnRptEdit" value="Edit" class="btn" />
+                    </td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- End Report Window -->
+
+
+ </div> 
+
+</body>
+</html>
