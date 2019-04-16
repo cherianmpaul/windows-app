@@ -339,7 +339,7 @@ function LoadAddressData() {
 
     xhttp.open("GET", "https://" + window.location.hostname + "/rest/api.php/address/", true);
 
-    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4){
@@ -367,10 +367,9 @@ function LoadSubscriptionData() {
     //Load Subscription Data to Memory
     var xhttp = new XMLHttpRequest();
 
-    
     xhttp.open("GET", "https://" + window.location.hostname + "/rest/api.php/subscription/", true);
 
-    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4){
@@ -398,7 +397,7 @@ function LoadSubscribedTillData() {
     
     xhttp.open("GET", "https://" + window.location.hostname + "/rest/api.php/subscribedtill/", true);
 
-    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4){
@@ -425,7 +424,7 @@ function LoadReportData() {
 
     xhttp.open("GET", "https://" + window.location.hostname + "/rest/api.php/report/1024", true);
 
-    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4) {
@@ -475,7 +474,7 @@ function RefreshAddressData(sCustId) {
     };
 
     xhttp.open("GET", "https://" + window.location.hostname + "/rest/api.php/address/" + sCustId, true);
-    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
     xhttp.send();
 
@@ -511,7 +510,7 @@ function RefreshSubscriptionData(sSubsId) {
     };
 
     xhttp.open("GET", "https://" + window.location.hostname + "/rest/api.php/subscription/" + sSubsId, true);
-    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
     xhttp.send();
 
@@ -549,7 +548,7 @@ function RefreshSubscribedTillData(sCustId) {
     };
 
     xhttp.open("GET", "https://" + window.location.hostname + "/rest/api.php/subscribedtill/" + sCustId, true);
-    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
     xhttp.send();
 
@@ -577,15 +576,16 @@ function mnuLogOff_Clicked() {
 
 function mnuBackup_Clicked() {
 
-    var sEmail = "suviseshakan@gmail.com"; 
-
-    if (confirm("Press OK to send backup to suviseshakan@gmail.com!")) {
+    //Enter Email address to send backup to.
+    var sEmail = "backup@domain.com"; 
+    
+    if (confirm("Press OK to send backup to " + sEmail)) {
 
         //Send Databse Backtup to the email provided
         var xhttp = new XMLHttpRequest();
 
         xhttp.open("GET", "https://" + window.location.hostname + "/rest/backup/backup.php?email=" + sEmail, true);
-        xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+        xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4) {
@@ -598,7 +598,9 @@ function mnuBackup_Clicked() {
             }
         };
 
-        xhttp.send();
+        //Disabled for Demo App
+        //xhttp.send();
+        alert("This section is disabled for demo app.");
 
     }
 
@@ -639,9 +641,10 @@ function mnuDeleteCustomer_Clicked() {
         };
 
         xhttp.open("DELETE", "https://" + window.location.hostname + "/rest/api.php/address/" + objAddress[nCurrentRow].Id.trim(), true);
-        xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+        xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
-        xhttp.send();
+        //Disabled for Demo App
+        //xhttp.send();
 
         //Remove from local objects
         var nRow = objSubscribedTill.findIndex(x => x.Id == objAddress[nCurrentRow].Id.trim());
@@ -1286,7 +1289,7 @@ function btnRemove_Clicked() {
             };
 
             xhttp.open("PUT", "https://" + window.location.hostname + "/rest/api.php/address/" + objAddress[nCurrentRow].Id.trim(), true);
-            xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+            xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
             xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     
             xhttp.send(json);
@@ -1324,7 +1327,7 @@ function btnRemove_Clicked() {
             };
 
             xhttp.open("PUT", "https://" + window.location.hostname + "/rest/api.php/address/" + objAddress[nCurrentRow].Id.trim(), true);
-            xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+            xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
             xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     
             xhttp.send(json);
@@ -1503,7 +1506,7 @@ function btnSave_Clicked() {
     else if (bEditRecord)
         xhttp.open("PUT", "https://" + window.location.hostname + "/rest/api.php/address/" + objAddress[nCurrentRow].Id.trim(), true);
 
-    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
     xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhttp.send(json);
 
@@ -1698,7 +1701,7 @@ function RemoveSubscriber_Clicked(CustNumber) {
         };
 
         xhttp.open("PUT", "https://" + window.location.hostname + "/rest/api.php/address/" + objAddress[nCurrentRow].Id.trim(), true);
-        xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+        xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
         xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
         xhttp.send(json);
@@ -1871,7 +1874,7 @@ function btnSubsDelete_Clicked() {
         };
 
         xhttp.open("DELETE", "https://" + window.location.hostname + "/rest/api.php/subscription/" + document.getElementById("txtSubsId").value, true);
-        xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+        xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
         xhttp.send();
 
@@ -1963,7 +1966,7 @@ function btnSubsSave_Clicked() {
         else if (bSubsEditRecord)
             xhttp.open("PUT", "https://" + window.location.hostname + "/rest/api.php/subscription/" + document.getElementById("txtSubsId").value, true);
 
-        xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+        xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
         xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         xhttp.send(json);
 
@@ -2230,7 +2233,7 @@ function btnRptSave_Clicked() {
     };
 
     xhttp.open("PUT", "https://" + window.location.hostname + "/rest/api.php/report/1024" , true);
-    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":uvXxEnI@kEF%" + document.getElementById("txtPassword").value));
+    xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
     xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhttp.send(json);
 
