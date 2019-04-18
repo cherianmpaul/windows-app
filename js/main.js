@@ -11,10 +11,9 @@ var nZindex = 5; //Stores the Windows Zindex
 var t; //Stores idle time
 var sREST_SERVER = "http://" + window.location.hostname ; //Change this if the REST SERVER is on a different Host.
 
+
 //******************CHANGE THIS TO FALSE TO RUN THIS APP ON A LOCALHOST WITH MYSQL**************/
-
-var bDemo = false;  
-
+var bDemo = true;  
 //******************CHANGE THIS TO FALSE TO RUN THIS APP ON A LOCAL HOST WITH MYSQL**************/
 
 
@@ -345,7 +344,10 @@ function LoadAddressData() {
     //Load Address Data to Memory
     var xhttp = new XMLHttpRequest();
 
-    xhttp.open("GET", sREST_SERVER + "/rest/api.php/address/", true);
+    if (bDemo)
+        xhttp.open("GET", "data/address.json", true);
+    else
+        xhttp.open("GET", sREST_SERVER + "/rest/api.php/address/", true);
 
     xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
@@ -375,7 +377,10 @@ function LoadSubscriptionData() {
     //Load Subscription Data to Memory
     var xhttp = new XMLHttpRequest();
 
-    xhttp.open("GET", sREST_SERVER + "/rest/api.php/subscription/", true);
+    if (bDemo)
+        xhttp.open("GET", "data/subscription.json", true);
+    else
+        xhttp.open("GET", sREST_SERVER + "/rest/api.php/subscription/", true);
 
     xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
@@ -402,8 +407,10 @@ function LoadSubscribedTillData() {
     //Load SubscribedTill Data to Memory
     var xhttp = new XMLHttpRequest();
 
-    
-    xhttp.open("GET", sREST_SERVER + "/rest/api.php/subscribedtill/", true);
+    if (bDemo)
+        xhttp.open("GET", "data/subscribedtill.json", true);
+    else
+        xhttp.open("GET", sREST_SERVER + "/rest/api.php/subscribedtill/", true);
 
     xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
@@ -430,7 +437,10 @@ function LoadReportData() {
     //Load SubscribedTill Data to Memory
     var xhttp = new XMLHttpRequest();
 
-    xhttp.open("GET", sREST_SERVER + "/rest/api.php/report/1024", true);
+    if (bDemo)
+        xhttp.open("GET", "data/report.json", true);
+    else
+        xhttp.open("GET", sREST_SERVER + "/rest/api.php/report/1024", true);
 
     xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
@@ -484,7 +494,7 @@ function RefreshAddressData(sCustId) {
     xhttp.open("GET", sREST_SERVER + "/rest/api.php/address/" + sCustId, true);
     xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
-    xhttp.send();
+    if (!bDemo) xhttp.send();
 
 };
 
@@ -520,7 +530,7 @@ function RefreshSubscriptionData(sSubsId) {
     xhttp.open("GET", sREST_SERVER + "/rest/api.php/subscription/" + sSubsId, true);
     xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
-    xhttp.send();
+    if (!bDemo) xhttp.send();
 
 };
 
@@ -558,7 +568,7 @@ function RefreshSubscribedTillData(sCustId) {
     xhttp.open("GET", sREST_SERVER + "/rest/api.php/subscribedtill/" + sCustId, true);
     xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
-    xhttp.send();
+    if (!bDemo) xhttp.send();
 
 };
 
@@ -606,9 +616,10 @@ function mnuBackup_Clicked() {
             }
         };
 
-        //Disabled for Demo App
-        //xhttp.send();
-        alert("This section is disabled for demo app.");
+        if (bDemo)
+            alert("This section is disabled for demo app.");
+        else
+            xhttp.send();
 
     }
 
@@ -651,8 +662,7 @@ function mnuDeleteCustomer_Clicked() {
         xhttp.open("DELETE", sREST_SERVER + "/rest/api.php/address/" + objAddress[nCurrentRow].Id.trim(), true);
         xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
-        //Disabled for Demo App
-        //xhttp.send();
+        if(!bDemo) xhttp.send();
 
         //Remove from local objects
         var nRow = objSubscribedTill.findIndex(x => x.Id == objAddress[nCurrentRow].Id.trim());
@@ -1884,7 +1894,7 @@ function btnSubsDelete_Clicked() {
         xhttp.open("DELETE", sREST_SERVER + "/rest/api.php/subscription/" + document.getElementById("txtSubsId").value, true);
         xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
 
-        xhttp.send();
+        if (!bDemo) xhttp.send();
 
         //Update Local Subscription Object
         var nRow = objSubscription.findIndex(x => x.Id == document.getElementById("txtSubsId").value);
