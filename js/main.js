@@ -1310,7 +1310,7 @@ function btnRemove_Clicked() {
             xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
             xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     
-            xhttp.send(json);
+            if(!bDemo) xhttp.send(json);
 
         }
 
@@ -1348,7 +1348,7 @@ function btnRemove_Clicked() {
             xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
             xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     
-            xhttp.send(json);
+            if(!bDemo) xhttp.send(json);
 
         }
 
@@ -1526,7 +1526,7 @@ function btnSave_Clicked() {
 
     xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
     xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-    xhttp.send(json);
+    if(!bDemo) xhttp.send(json);
 
     //Change all Text Boxes to Readonly Mode
     ReadOnlyMode();
@@ -1722,7 +1722,7 @@ function RemoveSubscriber_Clicked(CustNumber) {
         xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
         xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
-        xhttp.send(json);
+        if(!bDemo) xhttp.send(json);
 
     }
 
@@ -1986,7 +1986,7 @@ function btnSubsSave_Clicked() {
 
         xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
         xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-        xhttp.send(json);
+        if(!bDemo) xhttp.send(json);
 
         //Clear the Booleans
         bSubsNewRecord = false;
@@ -2253,7 +2253,7 @@ function btnRptSave_Clicked() {
     xhttp.open("PUT", sREST_SERVER + "/rest/api.php/report/1024" , true);
     xhttp.setRequestHeader("Authorization", "Basic " + btoa(document.getElementById("txtUsername").value + ":@75Zcs^brImi4E" + document.getElementById("txtPassword").value));
     xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-    xhttp.send(json);
+    if(!bDemo) xhttp.send(json);
 
     //Update Local Object
     objReport.LABEL_HEIGHT = document.getElementById("txtRptHeight").value;
