@@ -23,7 +23,7 @@ You can use any username and password to login. Whatever username and password y
 [![Click To Watch Youtube Video](https://img.youtube.com/vi/Jc7lLXXwl8c/0.jpg)](https://www.youtube.com/watch?v=Jc7lLXXwl8c)
 
 Thank you, <br />
-Cherian Paul. 
-[cherianpaul.com](https://www.cherianpaul.com)
+Cherian Paul.  <br />
+Visit me at [cherianpaul.com](https://www.cherianpaul.com)
 
 
