@@ -7,7 +7,7 @@ The UI was create with the help of code from [www.techumber.com](http://www.tech
 
 The app communicates to the database using REST. The REST is a single page php file that can be plugged into any database. The REST API is created from the core of [php-crud-api](https://github.com/mevdschee/php-crud-api/blob/master/extras/core.php). 
 
-If you want you can run this application on your local host. You'll need MySQL and Php. Just run the MySQL script in data/mysql_data.7z file. It will create the database and load the demo data. 
+If you want you can run this application on your local host. You'll need MySQL and Php. Just run the MySQL script in data/mysql_data.7z file on the SQL server and it will create the database and load the demo data. 
 
 You are free to download and use/modify the code the way you want.
 
