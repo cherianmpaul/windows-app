@@ -1,9 +1,9 @@
-# Windows UI Application
-This is a Windows Desktop UI application created using HTML, CSS3 and Vanilla Javascript that runs on a brower.  No JQuery or any Javascript Frameworks used. 100% of the code is written on plain old Javascript. The primary purpose of this application is to demonstrate how we can create rich Windows user interface experience using Javascript and HTML. 
+# Windows Native UI Application
+This is a Windows Desktop Native UI application created using HTML, CSS3 and Vanilla Javascript that runs on a brower.  No JQuery or any Javascript Frameworks used. 100% of the code is written on plain old Javascript. The primary purpose of this application is to demonstrate how we can create rich Windows user interface experience using Javascript and HTML. 
 
 This is a single page web application. The look and feel is like a windows application but it is built on HTML, CSS3 and Javascript so it runs on a browser. You can maintain address and print labels using this application. 
 
-The UI was create with the help of code from [www.techumber.com](http://www.techumber.com). You can read the post [here](https://www.techumber.com/the-ultimate-windows7-desktop-using-pure-css3-jquery/). The original code from techumber.com uses jQuery but I have removed all jQuery code and rewrote those code in Javascript. 
+The UI was created with the help of code from [www.techumber.com](http://www.techumber.com). You can read the post [here](https://www.techumber.com/the-ultimate-windows7-desktop-using-pure-css3-jquery/). The original code from techumber.com uses jQuery but I have removed all jQuery code and rewrote those code in Javascript. 
 
 The app communicates to the database using REST. The REST is a single page php file that can be plugged into any database. The REST API is created from the core of [php-crud-api](https://github.com/mevdschee/php-crud-api/blob/master/extras/core.php). 
 
