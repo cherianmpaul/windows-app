@@ -394,7 +394,7 @@
 
 /********************Start Remove Window CSS***************************/
 #remove {
-    width: 650px;
+    width: 670px;
     height: 575px;
     -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
     animation: fadein 1s;
@@ -405,7 +405,7 @@
 }
 
 #remove-in {
-    width: 633px;
+    width: 653px;
     height: 540px;
 }
 
