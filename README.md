@@ -15,8 +15,8 @@ You are free to download and use/modify the code the way you want.
 
 App is running at this URL: https://winui.cherianpaul.com/
 
-UserName : demo <br />
-Password : demo
+UserName : Demo <br />
+Password : Demo
 
 You can use any username and password to login. Whatever username and password you use the first time will be saved and you need to use the same username and password to login every time from then on. 
 
